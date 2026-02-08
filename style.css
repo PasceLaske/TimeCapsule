@@ -6,128 +6,162 @@
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: linear-gradient(135deg, #1e3a8a 0%, #312e81 50%, #4c1d95 100%);
+  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #4c1d95);
+  background-size: 300% 300%;
+  animation: gradientBG 18s ease infinite;
   min-height: 100vh;
   color: #f1f5f9;
   padding: 20px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Magische Partikel im Hintergrund */
+.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(255,255,255,0.9);
+  opacity: 0;
+  pointer-events: none;
+  animation: float 18s infinite linear;
+}
+
+@keyframes float {
+  0%   { transform: translateY(100vh) scale(0.2); opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-20vh) scale(0.1); opacity: 0; }
 }
 
 .container {
+  position: relative;
+  z-index: 2;
   width: 100%;
-  max-width: 540px;
+  max-width: 560px;
 }
 
 .card {
-  background: rgba(30, 41, 59, 0.78);
-  backdrop-filter: blur(16px);
-  border-radius: 24px;
-  padding: 40px 32px;
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
-  animation: fadeInUp 0.9s ease-out;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(18px);
+  border-radius: 28px;
+  padding: 44px 36px;
+  border: 1px solid rgba(165, 180, 252, 0.16);
+  box-shadow: 0 25px 80px rgba(0,0,0,0.65), inset 0 0 40px rgba(99,102,241,0.08);
+  animation: glowCard 6s ease-in-out infinite alternate;
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(50px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes glowCard {
+  from { box-shadow: 0 25px 80px rgba(0,0,0,0.65), inset 0 0 40px rgba(99,102,241,0.08); }
+  to   { box-shadow: 0 30px 100px rgba(99,102,241,0.25), inset 0 0 60px rgba(165,180,252,0.12); }
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 3.1rem;
-  font-weight: 700;
+  font-size: 3.4rem;
   text-align: center;
-  background: linear-gradient(90deg, #c7d2fe, #e0e7ff, #ddd6fe);
+  background: linear-gradient(90deg, #c7d2fe, #e0e7ff, #ddd6fe, #c7d2fe);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: titleShine 5s linear infinite;
   margin-bottom: 0.5rem;
+  text-shadow: 0 0 30px rgba(199, 210, 254, 0.5);
+}
+
+@keyframes titleShine {
+  to { background-position: 200% center; }
 }
 
 .subtitle {
   text-align: center;
-  color: #cbd5e1;
-  font-size: 1.1rem;
-  margin-bottom: 2.5rem;
-  opacity: 0.9;
+  color: #c7d2fe;
+  font-size: 1.15rem;
+  margin-bottom: 2.8rem;
+  opacity: 0.92;
+  letter-spacing: 0.4px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.7rem;
+  gap: 1.9rem;
+  position: relative;
+  z-index: 3;
 }
 
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-}
-
-label {
-  font-weight: 500;
+.input-group label {
   color: #e2e8f0;
-  font-size: 0.98rem;
+  font-weight: 500;
+  font-size: 1rem;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
 
 input, textarea {
-  padding: 14px 18px;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  border-radius: 14px;
-  background: rgba(30, 41, 59, 0.6);
-  color: #f1f5f9;
-  font-size: 1.03rem;
-  transition: all 0.25s ease;
-  font-family: inherit;
-}
-
-input::placeholder, textarea::placeholder {
-  color: #94a3b8;
+  padding: 16px 20px;
+  border: 1px solid rgba(165, 180, 252, 0.3);
+  border-radius: 16px;
+  background: rgba(30, 41, 59, 0.55);
+  color: #f8fafc;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
 }
 
 input:focus, textarea:focus {
-  outline: none;
   border-color: #a5b4fc;
-  box-shadow: 0 0 0 4px rgba(165, 180, 252, 0.2);
-  background: rgba(30, 41, 59, 0.85);
-}
-
-textarea {
-  resize: vertical;
-  min-height: 130px;
+  box-shadow: 0 0 0 5px rgba(165, 180, 252, 0.22), inset 0 2px 10px rgba(0,0,0,0.2);
+  background: rgba(30, 41, 59, 0.8);
 }
 
 .btn {
-  margin-top: 1.4rem;
-  padding: 16px 24px;
-  font-size: 1.08rem;
+  margin-top: 1.6rem;
+  padding: 18px 28px;
+  font-size: 1.12rem;
   font-weight: 600;
   color: white;
-  background: linear-gradient(90deg, #6366f1, #8b5cf6, #a78bfa);
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #c084fc, #8b5cf6, #6366f1);
+  background-size: 300% auto;
   border: none;
-  border-radius: 14px;
+  border-radius: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+  animation: buttonPulse 3.5s infinite;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 40px rgba(99, 102, 241, 0.45);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 18px 50px rgba(139, 92, 246, 0.55);
 }
 
-.btn.loading .btn-text { display: none; }
-.btn.loading .btn-loading { display: inline; }
+@keyframes buttonPulse {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
 
-/* Envelope Animation */
+/* Briefumschlag – deutlich magischer */
 .envelope-container {
   display: none;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
+  margin: 3rem 0 1rem;
+  position: relative;
 }
 
 .envelope-container.active {
@@ -135,19 +169,20 @@ textarea {
 }
 
 .envelope {
-  width: 260px;
-  height: 180px;
+  width: 280px;
+  height: 200px;
   position: relative;
-  perspective: 1000px;
+  transform-style: preserve-3d;
+  perspective: 1200px;
 }
 
 .body {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-  border-radius: 12px 12px 60px 60px;
+  background: linear-gradient(135deg, #fef9c3, #fef08a, #fde68a);
+  border-radius: 14px 14px 70px 70px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
   overflow: hidden;
 }
 
@@ -156,12 +191,12 @@ textarea {
   top: 0;
   left: 0;
   width: 100%;
-  height: 50%;
-  background: linear-gradient(to bottom, #cbd5e1, #94a3b8);
+  height: 55%;
+  background: linear-gradient(to bottom, #fbbf24, #d97706, #b45309);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: top;
-  transition: transform 1.4s ease-in-out;
-  z-index: 2;
+  transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 3;
 }
 
 .envelope.sealed .flap {
@@ -170,65 +205,96 @@ textarea {
 
 .letter {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  bottom: 40px;
-  background: #fefcbf;
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
-  transform: translateY(100%);
+  inset: 24px 22px 50px;
+  background: #fefce8;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: inset 0 3px 10px rgba(0,0,0,0.15);
+  transform: translateY(140%) scale(0.85);
   opacity: 0;
-  transition: all 1.2s ease-in-out;
+  transition: all 1.4s ease-out;
 }
 
-.envelope .letter {
-  transform: translateY(0);
+.envelope.sealed .letter {
+  transform: translateY(0) scale(1);
   opacity: 1;
-  transition-delay: 0.4s;
-}
-
-.letter-content {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  color: #1e293b;
-  white-space: pre-wrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  transition-delay: 0.5s;
 }
 
 .seal {
   position: absolute;
-  bottom: 20px;
+  bottom: 24px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(circle at 30% 30%, #fbbf24, #d97706);
+  transform: translateX(-50%) scale(0.6);
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle at 35% 35%, #fbbf24, #d97706, #92400e);
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.7), inset 0 2px 8px rgba(255,255,255,0.4);
   opacity: 0;
-  transition: opacity 0.6s ease 1.8s;
+  transition: all 0.8s ease 1.8s;
 }
 
 .envelope.sealed .seal {
+  transform: translateX(-50%) scale(1);
   opacity: 1;
+  animation: sealPulse 2.5s infinite alternate;
 }
 
-.envelope-text {
-  margin-top: 1.5rem;
-  font-size: 1.1rem;
-  color: #c7d2fe;
-  opacity: 0.9;
+@keyframes sealPulse {
+  from { box-shadow: 0 6px 20px rgba(251, 191, 36, 0.7), inset 0 2px 8px rgba(255,255,255,0.4); }
+  to   { box-shadow: 0 12px 40px rgba(251, 191, 36, 1), inset 0 4px 12px rgba(255,255,255,0.6); }
 }
 
-/* Success */
+/* Take-off & dissolve animation */
+.envelope.sealed.takeoff {
+  animation: takeoffAndDissolve 3.2s forwards 2.8s;
+}
+
+@keyframes takeoffAndDissolve {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  40%  { transform: translateY(-120px) scale(1.08); }
+  100% { transform: translateY(-400px) scale(0.4); opacity: 0; }
+}
+
+/* Sternenstaub beim Verschwinden */
+.envelope.sealed.takeoff ~ .magic-dust {
+  display: block;
+}
+
+.magic-dust {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.dust {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fde68a;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #fbbf24;
+  opacity: 0;
+  animation: dustBurst 2s ease-out forwards;
+}
+
+@keyframes dustBurst {
+  0%   { transform: translate(0,0) scale(0.5); opacity: 0; }
+  20%  { opacity: 0.9; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+}
+
+/* Success Screen */
 .success-message {
   display: none;
   text-align: center;
-  padding: 40px 20px;
-  animation: fadeIn 0.7s ease;
+  padding: 50px 24px;
+  animation: magicAppear 1s ease-out;
 }
 
 .success-message.active {
@@ -236,35 +302,18 @@ textarea {
 }
 
 .success-icon {
-  font-size: 4.5rem;
-  margin-bottom: 1.4rem;
-  animation: bounce 1.8s infinite;
+  font-size: 5.5rem;
+  margin-bottom: 1.6rem;
+  animation: floatIcon 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.7));
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-12px); }
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-18px) rotate(4deg); }
 }
 
-.success-message h3 {
-  color: #e0e7ff;
-  margin-bottom: 1rem;
-  font-size: 1.6rem;
-}
-
-.success-message p {
-  color: #cbd5e1;
-  margin-bottom: 0.8rem;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.92); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-  .card { padding: 32px 24px; }
-  h1 { font-size: 2.6rem; }
-  .envelope { width: 220px; height: 160px; }
+@keyframes magicAppear {
+  from { opacity: 0; transform: scale(0.85) translateY(30px); filter: blur(4px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
 }
