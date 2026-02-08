@@ -1,19 +1,72 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Zeitkapsel</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zeitkapsel – Deine Nachricht in die Zukunft</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<form id="msgForm">
-  <input type="email" id="email" required placeholder="Deine Email">
-  <textarea id="message" required></textarea>
-  <input type="datetime-local" id="sendAt" required>
-  <button>Planen</button>
-</form>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <h1>Zeitkapsel</h1>
+        <p class="subtitle">Schick eine Nachricht an dein zukünftiges Ich – oder an jemanden, den du liebst.</p>
+      </div>
 
-<script src="script.js"></script>
+      <form id="msgForm" class="form">
+        <div class="input-group">
+          <label for="email">Deine E-Mail-Adresse</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email"
+            placeholder="beispiel@domain.de" 
+            required 
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="message">Deine Nachricht</label>
+          <textarea 
+            id="message" 
+            name="message"
+            placeholder="Was möchtest du deinem zukünftigen Ich sagen? 💭" 
+            rows="6" 
+            required
+          ></textarea>
+        </div>
+
+        <div class="input-group">
+          <label for="sendAt">Wann soll die Nachricht ankommen?</label>
+          <input 
+            type="datetime-local" 
+            id="sendAt" 
+            name="sendAt"
+            required 
+          />
+        </div>
+
+        <button type="submit" class="btn">
+          <span class="btn-text">Zeitkapsel verschließen</span>
+          <span class="btn-loading">Wird gesendet...</span>
+        </button>
+      </form>
+
+      <div class="success-message" id="successMsg">
+        <div class="success-icon">✉️</div>
+        <h3>Erfolgreich gespeichert!</h3>
+        <p>Deine Nachricht ist sicher in der Zeitkapsel.</p>
+        <small>Du bekommst sie genau zum gewünschten Zeitpunkt.</small>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
