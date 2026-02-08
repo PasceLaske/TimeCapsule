@@ -1,68 +1,79 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zeitkapsel – Deine Nachricht in die Zukunft</title>
+  <title>Time Capsule – Send a Message to the Future</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <div class="container">
     <div class="card">
       <div class="header">
-        <h1>Zeitkapsel</h1>
-        <p class="subtitle">Schick eine Nachricht an dein zukünftiges Ich – oder an jemanden, den du liebst.</p>
+        <h1>Time Capsule</h1>
+        <p class="subtitle">Seal a message for your future self — or someone you care about.</p>
       </div>
 
       <form id="msgForm" class="form">
         <div class="input-group">
-          <label for="email">Deine E-Mail-Adresse</label>
+          <label for="email">Your Email Address</label>
           <input 
             type="email" 
             id="email" 
-            name="email"
-            placeholder="beispiel@domain.de" 
+            placeholder="you@example.com" 
             required 
             autocomplete="email"
           />
         </div>
 
         <div class="input-group">
-          <label for="message">Deine Nachricht</label>
+          <label for="message">Your Message</label>
           <textarea 
             id="message" 
-            name="message"
-            placeholder="Was möchtest du deinem zukünftigen Ich sagen? 💭" 
+            placeholder="What would you like to tell your future self? 💭" 
             rows="6" 
             required
           ></textarea>
         </div>
 
         <div class="input-group">
-          <label for="sendAt">Wann soll die Nachricht ankommen?</label>
+          <label for="sendAt">When should it arrive?</label>
           <input 
             type="datetime-local" 
             id="sendAt" 
-            name="sendAt"
             required 
           />
         </div>
 
-        <button type="submit" class="btn">
-          <span class="btn-text">Zeitkapsel verschließen</span>
-          <span class="btn-loading">Wird gesendet...</span>
+        <button type="submit" class="btn" id="submitBtn">
+          <span class="btn-text">Seal & Send</span>
+          <span class="btn-loading">Sending...</span>
         </button>
       </form>
 
+      <!-- Envelope Animation Container -->
+      <div class="envelope-container" id="envelopeContainer">
+        <div class="envelope">
+          <div class="flap"></div>
+          <div class="body">
+            <div class="letter" id="letter">
+              <div class="letter-content"></div>
+            </div>
+          </div>
+          <div class="seal"></div>
+        </div>
+        <p class="envelope-text">Your message is being sealed...</p>
+      </div>
+
       <div class="success-message" id="successMsg">
         <div class="success-icon">✉️</div>
-        <h3>Erfolgreich gespeichert!</h3>
-        <p>Deine Nachricht ist sicher in der Zeitkapsel.</p>
-        <small>Du bekommst sie genau zum gewünschten Zeitpunkt.</small>
+        <h3>Message Sealed Successfully!</h3>
+        <p>Your time capsule has been locked away.</p>
+        <small>It will open and be delivered exactly when you chose.</small>
       </div>
     </div>
   </div>
