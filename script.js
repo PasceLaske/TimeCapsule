@@ -5,7 +5,7 @@ document.getElementById("msgForm").addEventListener("submit", async e => {
   const button = form.querySelector("button");
   const successMsg = document.getElementById("successMsg");
 
- 
+  // Ladezustand
   button.classList.add("loading");
   button.disabled = true;
 
@@ -20,7 +20,7 @@ document.getElementById("msgForm").addEventListener("submit", async e => {
       "https://script.google.com/macros/s/AKfycbykbV93i50bwYUA36uLNAO9gdAJZs-lPPFy_PLMEEagzYgMF446pf3nbjgX8e1gJ8si1g/exec",
       {
         method: "POST",
-        mode: "no-cors",           
+        mode: "no-cors",           // wichtig bei Google Apps Script
         headers: {
           "Content-Type": "application/json",
         },
