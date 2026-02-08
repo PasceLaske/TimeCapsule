@@ -7,7 +7,7 @@ document.getElementById("msgForm").addEventListener("submit", async e => {
     send_at: sendAt.value
   };
 
-  await fetch("HIER_DEINE_SCRIPT_URL", {
+  await fetch("https://script.google.com/macros/s/AKfycbykbV93i50bwYUA36uLNAO9gdAJZs-lPPFy_PLMEEagzYgMF446pf3nbjgX8e1gJ8si1g/exec", {
     method: "POST",
     body: JSON.stringify(data)
   });
