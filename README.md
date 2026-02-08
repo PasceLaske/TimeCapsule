@@ -46,8 +46,4 @@ Perfect for:
 Feel free to fork the project and host it anywhere!  
 (You will need to set up your own Google Apps Script endpoint for storing & sending)
 
-## License
 
-[MIT License](LICENSE)
-
-Made with ♡ – for moments that matter in the future
