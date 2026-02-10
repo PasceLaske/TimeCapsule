@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Time Capsule – Send a Message to the Future</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <h1>Time Capsule</h1>
+        <p class="subtitle">Send a message to your future self – or to someone you care about.</p>
+      </div>
+
+      <form id="msgForm" class="form">
+        <div class="input-group">
+          <label for="email">Your email address</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email"
+            placeholder="example@domain.com" 
+            required 
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="message">Your message</label>
+          <textarea 
+            id="message" 
+            name="message"
+            placeholder="What would you like to tell your future self? 💭" 
+            rows="6" 
+            required
+          ></textarea>
+        </div>
+
+        <div class="input-group">
+          <label for="sendAt">When should the message arrive?</label>
+          <input 
+            type="datetime-local" 
+            id="sendAt" 
+            name="sendAt"
+            required 
+          />
+        </div>
+
+        <button type="submit" class="btn">
+          <span class="btn-text">Seal the Time Capsule</span>
+          <span class="btn-loading">Sending...</span>
+        </button>
+      </form>
+
+      <div class="success-message" id="successMsg">
+        <div class="success-icon">✉️</div>
+        <h3>Successfully saved!</h3>
+        <p>Your message is safely stored in the time capsule.</p>
+        <small>You will receive it exactly when you chose.</small>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
