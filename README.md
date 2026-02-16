@@ -36,7 +36,7 @@ Perfect for:
 - Messages are sent automatically at the exact time you choose  
 - Very simple & emotional way to create something meaningful
 
-## Technologies (very high level)
+## Technologies 
 
 - HTML + CSS + Vanilla JavaScript  
 - Google Apps Script (for storing & sending emails in the future)
